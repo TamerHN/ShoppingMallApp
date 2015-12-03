@@ -47,10 +47,8 @@ public class Mall {
 	}
 	public Enumeration <Store> stores()
 	{
-		Enumeration<Store> st = this.stores.elements();
-		while(st.hasMoreElements())
-			System.out.println(st.nextElement().getId());
-		return st;
+		Enumeration<Store> stores = this.stores.elements();
+		return stores;
 	}
 	public void addStore(Store st)
 	{

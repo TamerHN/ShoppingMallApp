@@ -5,6 +5,9 @@ package Store;
 
 import java.util.*;
 
+import Customers.*;
+import Items.*;
+
 /**
  * @author TamerHN
  *
@@ -12,9 +15,8 @@ import java.util.*;
 public abstract class Store extends Observable implements Cloneable{
 	String name;
 	int id;
-	Vector <Observer> observers = new Vector<Observer>();
-	Vector <Observer> items = new Vector<Observer>();
-	Vector <Observer> customers = new Vector<Observer>();
+	Vector <Iitem> items = new Vector<Iitem>();
+	Vector <Customer> customers = new Vector<Customer>();
 	public String getName() {
 		return name;
 	}
@@ -31,12 +33,34 @@ public abstract class Store extends Observable implements Cloneable{
 		this.id = id;
 	}
 
-	@Override
-	public void addObserver(Observer o) 
+	public Enumeration <Customer> customers()
 	{
-		observers.add(o);
-		System.out.println("A new Observer's been added Successfully to store: "+this.getName());
+		Enumeration <Customer> cust = this.customers.elements();
+		return cust;
 	}
+	public Enumeration <Iitem> items()
+	{
+		Enumeration <Iitem> it = this.items.elements();
+		return it;
+	}
+	public void addItem(Iitem item)
+	{
+		this.items.add(item);
+		setChanged();
+		notifyObservers(item);
+	}
+	public void enter(Customer c)
+	{
+		this.customers.add(c);
+	}
+	public void exit(Customer c)
+	{
+		this.customers.remove(c);
+	}
+	
+	public void addSubStore(Store subSt){}
+	public Enumeration <Store> subStores(){ return null;}
+	public void removeSubStore(Store subSt ){}
 	
 
 	

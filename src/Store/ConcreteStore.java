@@ -1,5 +1,7 @@
 package Store;
 
+import Customers.Customer;
+
 public class ConcreteStore extends Store {
 	
 	public  ConcreteStore clone()
@@ -16,5 +18,6 @@ public class ConcreteStore extends Store {
 		}
 		return cs;
 	}
+
 
 }

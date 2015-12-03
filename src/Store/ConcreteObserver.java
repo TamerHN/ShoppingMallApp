@@ -18,6 +18,7 @@ public class ConcreteObserver implements Observer {
 	@Override
 	public void update(Observable arg0, Object arg1) {
 		// TODO Auto-generated method stub
+		System.out.println("I'm the ovserve! I've recieved the update");
 		
 	}
 
